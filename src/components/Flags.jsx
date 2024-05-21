@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Germainflag from '../assets/Germain-flag.png';
 import USAflag from '../assets/USA-flag.png';
 import Brazilflag from '../assets/Brazil-flag.png';
@@ -10,7 +10,7 @@ import Algeriaflag from '../assets/Algeria-flag.png';
 import { useContext } from 'react'
 import { ThemeContext } from '../context/ThemeContext';
 
-const countries = [
+const initialCountries = [
   { flag: Germainflag, name: 'Germany', population: 81770900, Region: 'Europe', Capital: 'Berlin' },
   { flag: USAflag, name: 'United States of America', population: 323947000, Region: 'Americas', Capital: 'Washington, D.C' },
   { flag: Brazilflag, name: 'Brazil', population: 206135893, Region: 'Americas', Capital: 'Brasilia' },
@@ -22,10 +22,19 @@ const countries = [
 ];
 
 const Flags = () => {
+  const [countries, setCountries] = useState([initialCountries])
   const {theme} = useContext(ThemeContext)
+
+  useEffect(() =>{
+    fetch('https://restcountries.com/v3.1/all')
+    .then(response => response.json())
+    .then(data => setCountries(data))
+    .catch(error => console.error('Error fetching countries:' , error))
+  }, [])
+
   return (
     <div className={` ${theme === 'light' ? 'bg-ligt-bg' : 'bg-d-dark'} mt-5 grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 justify-center items-center mx-auto  shadow-lg shadow-opacity-50 `}>
-      {countries.map((country, index) => (
+      {Flags.map((country, index) => (
         <article key={index}>
           <section className={`${theme === 'light' ? 'bg-c-white' : 'bg-m-dark'} shadow-lg shadow-opacity-70`}>
             <div>
