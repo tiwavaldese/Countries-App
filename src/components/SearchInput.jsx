@@ -1,16 +1,17 @@
 import React from 'react'
 import { IoSearchOutline } from 'react-icons/io5'
+import { useContext } from 'react'
+import { ThemeContext } from '../context/ThemeContext';
 
 function SearchInput() {
+  const {theme} = useContext(ThemeContext)
   return (
     <div className='grid justify-between mt-3 md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-2 gap-5'>
 <div className={`relative w-full md:w-60 lg:w-60  items-center flex mt-3 ${theme === 'light'? 'bg-c-white' : 'bg-m-dark'}  ${theme === 'light'? 'text-d-dark' : 'text-c-white'}`}>
-  
-<div>
-      <IoSearchOutline className='absolute inset-y-0 left-0 text-lg p-7 flex  pointer-events-none'/>
-</div>
-  
-  <input className={`pl-2 h-10  ${theme === 'light' ? 'bg-c-white text-gray-500' : 'bg-m-dark text-c-white'} border-0 focus:outline-none text-sm`}
+<span className='absolute inset-y-0 left-0 text-lg p-3 flex  pointer-events-none'>
+  <IoSearchOutline />
+</span> 
+  <input className={`pl-12 h-10  ${theme === 'light' ? 'bg-c-white text-gray-500' : 'bg-m-dark text-c-white'} border-0 focus:outline-none text-sm`}
     type="search"
     placeholder="Search for a country"/>
   </div>
