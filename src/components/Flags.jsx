@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useContext } from 'react'
 import { ThemeContext } from '../context/ThemeContext';
 
-const Flags = () => {
-  const {theme} = useContext(ThemeContext)
+const Flags = ({theme, countries}) => {
 
   return (
     <div className={` ${theme === 'light' ? 'bg-light-bg' : 'bg-d-dark'} mt-5 grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 justify-center items-center mx-auto  shadow-lg shadow-opacity-50 `}>

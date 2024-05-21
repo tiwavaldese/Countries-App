@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css';
 import MoonIcon from './components/MoonIcon'
 import SearchInput from './components/SearchInput'
-import { useContext } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { ThemeContext } from './context/ThemeContext';
 import Flags from './components/Flags';
 import Germainflag from './assets/Germain-flag.png';
@@ -66,7 +66,7 @@ function App() {
       />
       <Flags 
       theme={theme}
-      countries = {filterCountries}
+      countries = {countries.length === 0? initialCountries : filterCountries}
       />    
     </div>
   )
