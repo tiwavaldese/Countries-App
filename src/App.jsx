@@ -11,7 +11,7 @@ function App() {
   return (
     <div className={`p-[2rem] w-full md-w-[60%] lg-w-[45%] font-poppins ${theme === 'light' ? 'bg-light-bg text-d-dark' : 'bg-d-dark text-c-white'} `}>     
       <MoonIcon/>
-      <SearchInput />
+      <SearchInput/>
       <Flags />    
     </div>
   )
