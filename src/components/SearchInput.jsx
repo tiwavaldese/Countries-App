@@ -21,7 +21,7 @@ setSearchCountry(event.target.value)
     placeholder="Search for a country"/>
   </div>
   <select className={`pl-2 h-10 w-full md:w-60 lg:w-40 flex ml-auto mt-3 ${theme === 'light'? 'bg-c-white' : 'bg-m-dark'}  ${theme === 'light'? 'text-c-light-gray' : 'text-c-white'} border-0 focus:outline-none text-sm `} onChange={handleFilterRegion}>
-  <option disabled hidden value='' >Filter by Region</option>
+  <option disabled hidden value=' '>Filter by Region</option>
   <option value='africa'>Africa</option>
   {/* <option value="north america">North America</option>
   <option value="central america">Central America</option>

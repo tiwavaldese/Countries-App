@@ -66,7 +66,7 @@ function App() {
       />
       <Flags 
       theme={theme}
-      countries = {countries.length === 0? initialCountries : filterCountries}
+      countries = {filterCountries.length === 0? initialCountries : filterCountries}
       />    
     </div>
   )

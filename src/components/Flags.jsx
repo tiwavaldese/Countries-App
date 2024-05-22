@@ -1,6 +1,5 @@
 import React from 'react';
-import { useContext } from 'react'
-import { ThemeContext } from '../context/ThemeContext';
+
 
 const Flags = ({theme, countries}) => {
 
@@ -11,7 +10,7 @@ const Flags = ({theme, countries}) => {
         <article key={index}>
           <section className={`${theme === 'light' ? 'bg-c-white' : 'bg-m-dark'} shadow-lg shadow-opacity-70`}>
             <div>
-            <img src={country.flag} alt={`${country.name} flag`}  />
+            <img src={country.flag } alt={`${country.name} flag`}  />
           </div>
           <div className='p-5 leading-relaxed'>
             <h2 className='font-bold mt-3 mb-3 text-lg'>{country.name}</h2>
