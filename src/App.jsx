@@ -51,7 +51,7 @@ function App() {
 
   const filterCountries = countries.filter((country) =>{
     const searchCountryMatch = country.name.toLowerCase().includes(searchCountry.toLowerCase());
-    const filterRegionMatch = '' || country.region.toLowerCase() === filterRegion.toLowerCase();
+    const filterRegionMatch = filterRegion === '' || country.region.toLowerCase() === filterRegion.toLowerCase();
 
     return searchCountryMatch && filterRegionMatch
   })
@@ -66,7 +66,7 @@ function App() {
       />
       <Flags 
       theme={theme}
-      countries = {filterCountries.length === 0? initialCountries : filterCountries}
+      countries = { filterCountries}
       />    
     </div>
   )
