@@ -1,6 +1,5 @@
 import React from 'react'
 import { IoMoonOutline, IoMoonSharp} from "react-icons/io5"
-import { CiLight } from "react-icons/ci"
 import { useContext } from 'react'
 import { ThemeContext } from '../context/ThemeContext'
 

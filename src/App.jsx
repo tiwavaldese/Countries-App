@@ -13,7 +13,8 @@ import Afghanistanflag from './assets/Afghanistan-flag.png';
 import AlandIslandsflag from './assets/AlandIslands-flag.png';
 import Albaniaflag from './assets/Albania-flag.png';
 import Algeriaflag from './assets/Algeria-flag.png';
-
+import CountriesDetail from './components/CountriesDetail';
+import {  Router, Route, Routes } from 'react-router-dom';
 
 const initialCountries = [
   { flag: Germainflag, name: 'Germany', population: 81770900, region: 'Europe', capital: 'Berlin' },
@@ -31,6 +32,7 @@ function App() {
   const [countries, setCountries] = useState(initialCountries);
   const [searchCountry, setSearchCountry] = useState('');
   const [filterRegion,setFilterRegion] = useState('');
+  const [selectedCountry, setSelectedCountry] = useState(null)
   const {theme} = useContext(ThemeContext)
 
   useEffect(() =>{
@@ -40,9 +42,15 @@ function App() {
       const structuredData = data.map(country => ({
         flag: country.flags?.svg,
         name: country.name?.common,
+        'native-name': country.nativeName?.official,
         population: country.population,
         region:country.region,
+        'sub-region': country.subregion,
         capital: country.capital?.[0] || 'N/A',
+        'border-countries': country.borders || [],
+        'top-level-domain': country.tld?.[0] || '',
+        currencies: country.currencies,
+        languages: country.languages,
       }))
       setCountries(structuredData)
     })
@@ -55,8 +63,11 @@ function App() {
 
     return searchCountryMatch && filterRegionMatch
   })
-
+const handleCountryClick = (country) =>{
+  setSelectedCountry(country)
+}
   return (
+    <Router>
     <div className={`p-[2rem] w-full md-w-[60%] lg-w-[45%] font-poppins ${theme === 'light' ? 'bg-light-bg text-d-dark' : 'bg-d-dark text-c-white'} `}>     
       <MoonIcon/>
       <SearchInput
@@ -64,11 +75,23 @@ function App() {
       setSearchCountry = {setSearchCountry}
       setFilterRegion = { setFilterRegion}
       />
+      {
+        selectedCountry ? (
+        <CountriesDetail  country ={selectedCountry} theme ={theme} />
+        ):
+(
       <Flags 
       theme={theme}
       countries = { filterCountries}
-      />    
+      onCountryClick = {handleCountryClick}
+      /> 
+      )}  
+      <Routes>
+<Route path='/' element={<Home/>} />
+<Route path='/country/:countryName' element={<CountriesDetail/>} />
+      </Routes>
     </div>
+    </Router>
   )
 }
 
