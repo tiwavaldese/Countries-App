@@ -26,7 +26,7 @@ setSearchCountry(event.target.value)
   {/* <option value="north america">North America</option>
   <option value="central america">Central America</option>
   <option value="south america">South America</option> */}
-  <option value='america'>Americas</option>
+  <option value='americas'>Americas</option>
   <option value='asia'>Asia</option>
   <option value='europe'>Europe</option>
   <option value='oceania'>Oceania</option>
